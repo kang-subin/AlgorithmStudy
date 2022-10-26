@@ -1,6 +1,6 @@
 package week5;
 
-public class HashFuntion { // hash 함수
+public class HashFunction { // hash 함수
     public int hash(String key) {
             int asciiSum = 0;
             for (int i = 0; i < key.length(); i++) {
@@ -12,7 +12,7 @@ public class HashFuntion { // hash 함수
         }
 
     public static void main(String[] args) {
- HashFuntion hf = new HashFuntion();
+ HashFunction hf = new HashFunction();
     hf.hash("subin");
     }
 
