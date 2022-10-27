@@ -1,9 +1,7 @@
-package week5;
+package week6;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.util.Objects.hash;
 
 public class HashFunction3 {
 
