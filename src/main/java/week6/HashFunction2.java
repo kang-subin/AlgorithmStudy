@@ -1,11 +1,7 @@
-package week5;
-
-import org.w3c.dom.Node;
+package week6;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.Objects.hash;
 
 public class HashFunction2 {
 
@@ -26,7 +22,7 @@ public class HashFunction2 {
         }
     }
 
-    List<Node>[] table = new ArrayList[1000];
+    List<Node>[] table = new ArrayList[1000]; // node 객체값이 들어가는 list
     public int hash(String str){
         int ascii = 0;
         for (int i =0; i < str.length(); i++){
@@ -35,6 +31,9 @@ public class HashFunction2 {
     return  ascii % 1000;
     }
 
+    HashFunction2 (){}
+
+
     public void insert(String key, int value) {
         // List
         int hashIdx = hash(key);
@@ -42,7 +41,7 @@ public class HashFunction2 {
             this.table[hashIdx] = new ArrayList<>();
         }
         // Map, Object
-        this.table[hashIdx].add(new Node(key, value));
+        this.table[hashIdx].add(new Node(key, value)); //hashIdx의
     }
 
 

@@ -1,4 +1,4 @@
-package week5;
+package week6;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +30,7 @@ public void insert(String key,Integer value){
 
 }
 public int search (String key){
+
         return this.talbe[hash(key)];
 }
 

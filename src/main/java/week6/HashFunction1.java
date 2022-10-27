@@ -1,4 +1,4 @@
-package week5;
+package week6;
 
 public class HashFunction1 { // hash 함수
     public int hash(String key) {
