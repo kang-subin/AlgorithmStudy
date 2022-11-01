@@ -6,15 +6,15 @@ public class TemplateCallbackPrime { // 콜백사용 : 함수를 매개변수로
         return a < b;
     }
 
-    boolean someOperation2 (int a , int b){
-        return a < b/2;
+    boolean someOperation2(int a, int b) {
+        return a < b / 2;
     }
 
-    boolean someOperation3 (int a , int b){
+    boolean someOperation3(int a, int b) {
         return a <= b;
     }
 
-    boolean isPrime(int num , StatementStratgy stmt) {
+    boolean isPrime(int num, StatementStratgy stmt) {
         for (int i = 2; stmt.compare(i, num); i++) {
             System.out.println(i);
             if (num % i == 0) return false;
@@ -23,13 +23,10 @@ public class TemplateCallbackPrime { // 콜백사용 : 함수를 매개변수로
     }
 
     public static void main(String[] args) {
-TemplateCallbackPrime tcp = new TemplateCallbackPrime();
-boolean r = tcp.isPrime(17, new StatementStratgy() {
-    @Override
-    public boolean compare(int a, int b) {
-        return a * a < b;
-    }
-});
-        System.out.println(r);
+        TemplateCallbackPrime tcp = new TemplateCallbackPrime();
+        System.out.println(tcp.isPrime(13, (a, b)-> a < b)); // 익명 내부 클래스의 경우 코드가 더 복잡해 짐 따라서 람다식으로 표현함
+        System.out.println(tcp.isPrime(17, (a, b)-> a < b/2));
+        System.out.println(tcp.isPrime(19, (a, b)-> a * a < b));
+
     }
 }
