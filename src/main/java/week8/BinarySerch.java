@@ -19,9 +19,9 @@ public class BinarySerch {
                 System.out.printf("%d는 %d에 있습니다.", targetNum, midIdx);
 
             } else if(midValue > targetNum) { // 중간 이하 제거함
-                startIdx = midIdx + 1;
+                endIndx = midIdx - 1;
             } else if (midValue < targetNum) {
-                endIndx = midIdx - 1; // 중간 이상 제거
+                startIdx = midIdx + 1; // 중간 이상 제거
             } else {
                 System.out.println(midIdx);
             }
