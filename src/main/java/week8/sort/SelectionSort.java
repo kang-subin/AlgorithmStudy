@@ -1,15 +1,15 @@
 package week8.sort;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public class SelectionSort {
-    public int[] SelectionSort(int[] arr , StatementStrategy statementStrategy) {
+    public int[] SelectionSort(int[] arr , BiFunction<Integer, Integer, Boolean> stmt) {
 
         for (int i = 0; i < arr.length - 1; i++) {
             int minIdx = i;
             for (int j = i; j < arr.length; j++) {
-             //   if (arr[minIdx] > arr[j]) minIdx = j; callback으로 변경
-                if (statementStrategy.apply(arr[minIdx], arr[j])) minIdx = j;
+                if (stmt.apply(arr[minIdx], arr[j])) minIdx = j; // stmt 의 매개변수
             }
             int temp = arr[i];
             arr[i] = arr[minIdx];
@@ -25,6 +25,7 @@ public class SelectionSort {
         SelectionSort ss = new SelectionSort();
         ss.SelectionSort(arr, (a, b) -> a < b);
         ss.SelectionSort(arr, (a, b) -> a > b);
+        BiFunction<Integer, Integer, Boolean> biFunction = (a, b) -> a > b;
     }
 }
 
