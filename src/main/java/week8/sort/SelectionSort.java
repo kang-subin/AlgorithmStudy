@@ -23,7 +23,7 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 7, 4, 9, 10, 223, 111, 23, 3, 39};
         SelectionSort ss = new SelectionSort();
-        ss.SelectionSort(arr, (a, b) -> a < b);
+        ss.SelectionSort(arr, (a, b) -> a < b); // 람다식 적용하기 위해서 interface, bifunction 이용
         ss.SelectionSort(arr, (a, b) -> a > b);
         BiFunction<Integer, Integer, Boolean> biFunction = (a, b) -> a > b;
     }
