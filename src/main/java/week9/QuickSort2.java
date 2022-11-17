@@ -5,34 +5,44 @@ import java.util.Arrays;
 
 public class QuickSort2 {
 
-    public static void main(String[] args) {
-        int [] arr = {20, 28, 5, 19, 40, 50, 5, 25};
+    public int[] sort(int[] arr, int startIdx, int endIdx) {
+        int leftIdx = startIdx;
+        int rightIdx = endIdx;
+        int pivot = arr[(startIdx + endIdx) / 2];
+        // 언제까지 반복되는지? leftIdx == rightIdx일 때도 아래 로직이 반복됨
+        // ex) leftIdx = 3, rightIdx = 3일 때도
+        // 왼쪽과 오른쪽 각각 교환할 index를 정하는 부분 pivot까지 올 수도 있다.
+        while(leftIdx <= rightIdx){
+            while(arr[leftIdx] < pivot) leftIdx += 1;   // <=아닙니다.
+            while(arr[rightIdx] > pivot) rightIdx -= 1;   // <=아닙니다.
+            // leftIdx = 4, rightIdx = 7 그대로 왜 냐하면 25는 교환 대상이기 때문입니다.
 
-        int pivot = arr.length / 2;
-        int leftIdx = 0;
-        int rihgtIdx = arr.length -1;
+            if(leftIdx <= rightIdx){
+                int temp = arr[leftIdx];
+                arr[leftIdx] = arr[rightIdx];
+                arr[rightIdx] = temp;
+                leftIdx += 1;
+                rightIdx -= 1;
+            }
+            System.out.printf("leftIdx:%d rightIdx:%d\n", leftIdx, rightIdx);
+            System.out.println(Arrays.toString(arr));
+        }
+        // 교환이 모두 끝나면 왼쪽, 오른쪽 두 그룹으로 나누어 지면 됩니다.
+        // 20, 18, 5, 19, 25, 5, 50, 40
 
-        while (arr[leftIdx] < arr[pivot]) leftIdx += 1;
-        System.out.println(leftIdx);
+        if(startIdx < rightIdx)
+            sort(arr, startIdx, rightIdx);
 
+        if(leftIdx < endIdx)
+            sort(arr, leftIdx, endIdx);
 
-        while (arr[rihgtIdx] > arr[pivot]) rihgtIdx -= 1;
-        System.out.println(rihgtIdx);
-
-        int temp = arr[leftIdx];
-        arr[leftIdx] = arr[rihgtIdx];
-        arr[rihgtIdx] = temp;
-        leftIdx += 1;
-        rihgtIdx += 1;
-        System.out.println(Arrays.toString(arr));
-
+        return arr;
     }
 
+    public static void main(String[] args) {
+        var arr = new int[]{20, 18, 5, 19, 40, 50, 5, 25};
+        QuickSort2 sort = new QuickSort2();
+        var r = sort.sort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(r));
+    }
 }
-
-
-
-
-// pivot 기준으로 idx 0~ 읽다가 pivot 보다 작으면 냅두고 옆칸으로 옮기기
-// pivot 보다 큰 경우 생기면 비교하는 idx랑 pivot 위치 바꾸고 각 각 idx값에 -1, +1 하기
-
