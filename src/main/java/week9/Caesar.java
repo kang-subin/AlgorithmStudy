@@ -12,6 +12,7 @@ public String solution (String a , int n) {
     for (int i = 0; i < a.length(); i++) {
         char aphabet = a.charAt(i);
         int asci = aphabet + n;
+        if(asci > 122) asci = 96 + n;
         ceasar = (char) asci;
         arr[i] = ceasar + "";
         ceasarcode += arr[i];
@@ -29,8 +30,8 @@ public String solution (String a , int n) {
 
 
     public static void main(String[] args) {
-        int n = 1;
-        String a = "AB";
+        int n = 4;
+        String a = "aBz";
         Caesar caesar = new Caesar();
         System.out.println((caesar.solution(a,n)));
 
