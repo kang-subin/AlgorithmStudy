@@ -2,7 +2,7 @@ package week10;
 
 public class Print {
 
-public static String star (int n){ //별 출력하기
+public static String star (int n){ // 별 출력하기
     if(n == 0) return "";
     String star = "*";
     return star + star(n-1) ;
